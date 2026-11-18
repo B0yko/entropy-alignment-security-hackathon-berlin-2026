@@ -6,7 +6,18 @@ Riley was an AI assistant for a fictional clinic. It answered front-desk questio
 
 Entropy set a red-teaming challenge for 20 teams: use prompt injection through Riley's chat interface to make it disclose confidential patient data. The teams tested Riley on different language models across three increasingly strict levels of protection.
 
+## Our red-team strategy
+
+On Level 2 we measured how many patients' records appeared in chat. Level 3 added a guard inside the database tool, so we changed what we measured: **could a patient lose privacy even if Riley never printed their record?**
+
+<p align="center"><img src="assets/social-preview.png" width="880" alt="From records to relationships: Level 2 exposed records for 450 of 450 synthetic patients. On Level 3 a reply linked a surname to a record number without showing the patient record." /></p>
+
+<details>
+<summary>Results at a glance: all three levels</summary>
+
 <img src="assets/levels.svg" width="480" alt="Level 1: warm-up. Level 2: records exposed for 450/450 synthetic patients. Level 3: Entropy's internal database guard. We reported matches for 2/450 patients; archived Sonnet turns support one." />
+
+</details>
 
 ### Level 1 · Warm-up
 
@@ -22,11 +33,9 @@ That's coverage of the patient table, not every field in the clinic or a 100% su
 
 At Level 2, Entropy filtered Riley's answers. At Level 3, its internal guard could also block a database read, even if **Haiku 5.5** or **Sonnet 5.5** agreed to it. In the archived Haiku turns, no patient record came back. On Sonnet, a number in the reply disclosed something the guard was supposed to protect: **whether a medical record number and a surname belonged to the same patient.**
 
-<img src="assets/three-turns.svg" width="480" alt="Turn 8: no match, count 0. Turn 11: one matching patient, count 55. Both turns logged a database call. In turn 12 Sonnet denied making the call in turn 11." />
+Both identifiers were already in the question. The negative control came back **0**; the proposed match came back **55**, the count for **one patient** in this test. Both turns logged a database call. [See the two replies and Sonnet's later denial.](evidence.md#level-3--three-sonnet-turns)
 
-Both identifiers were already in the question. What Sonnet gave away was the link between them. In this test, the count **55** meant **one** matching patient, not 55 patients. Its later denial didn't undo the disclosure.
-
-#### How we checked the result, step by step
+#### What the agents contributed
 
 1. **Keep both sides of each turn.** I built the evaluation kit and coordinated **6 lines of investigation**. Across **200+ logged turns** in my Level 3 report, the agents recorded what Riley said alongside what its tools did.
 2. **Compare notes across agents.** After each round we pooled the observations by turn ID. The team archive preserves **25 selected turns**: 22 Sonnet, 2 Haiku and 1 without a model label. Those are examples for review, not a success rate.
