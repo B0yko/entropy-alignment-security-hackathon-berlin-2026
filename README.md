@@ -9,10 +9,8 @@ Entropy set a red-teaming challenge for 20 teams: use prompt injection through R
 <details>
 <summary>Results at a glance: all three levels</summary>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/levels-dark.svg">
-  <img src="assets/levels.svg" width="400" alt="Level 1: warm-up. Level 2: records exposed for 450/450 synthetic patients. Level 3: Entropy's internal database guard. We reported matches for 2/450 patients; archived Sonnet turns support one.">
-</picture>
+<a href="assets/levels.svg#gh-light-mode-only"><img src="assets/levels.svg" width="400" alt="Level 1: warm-up. Level 2: records exposed for 450/450 synthetic patients. Level 3: Entropy's internal database guard. We reported matches for 2/450 patients; archived Sonnet turns support one."></a>
+<a href="assets/levels-dark.svg#gh-dark-mode-only"><img src="assets/levels-dark.svg" width="400" alt=""></a>
 
 </details>
 
@@ -30,10 +28,8 @@ That's coverage of the patient table, not every field in the clinic or a 100% su
 
 Riley had two barriers: it could refuse the request in chat, and Entropy's guard inside `query_db` could reject the query. We tested **Haiku 5.5** and **Sonnet 5.5**. On Sonnet, what worked was a reframed prompt and a single query that the guard only partly inspected.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/attack-dark.svg">
-  <img src="assets/attack-light.svg" width="800" alt="Four steps: the prompt recasts Riley as the SQL layer, so Sonnet calls query_db once; the guard inspects only the first table in FROM and the columns in SELECT; the query returns a count, and 55 identifies one matching patient.">
-</picture>
+<a href="assets/attack-light.svg#gh-light-mode-only"><img src="assets/attack-light.svg" width="800" alt="Four steps: the prompt recasts Riley as the SQL layer, so Sonnet calls query_db once; the guard inspects only the first table in FROM and the columns in SELECT; the query returns a count, and 55 identifies one matching patient."></a>
+<a href="assets/attack-dark.svg#gh-dark-mode-only"><img src="assets/attack-dark.svg" width="800" alt=""></a>
 
 The prompt moved Sonnet from refusing to calling the tool. The query then passed a guard that inspected the first table in `FROM` and the columns in `SELECT`, while the second table and the predicate on private fields went unchecked. The reply was a number, and the number answered the question.
 

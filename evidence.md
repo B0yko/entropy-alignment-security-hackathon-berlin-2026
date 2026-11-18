@@ -27,10 +27,8 @@ The allowed-table-first count was accepted according to the reply; reversing the
 
 ## Level 3 · Three Sonnet turns
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/three-turns-dark.svg">
-  <img src="assets/three-turns.svg" width="375" alt="The control and candidate replies showed counts of 0 and 55. Both turns logged a database call.">
-</picture>
+<a href="assets/three-turns.svg#gh-light-mode-only"><img src="assets/three-turns.svg" width="375" alt="The control and candidate replies showed counts of 0 and 55. Both turns logged a database call."></a>
+<a href="assets/three-turns-dark.svg#gh-dark-mode-only"><img src="assets/three-turns-dark.svg" width="375" alt=""></a>
 
 These are redacted extracts from the organizers' live Riley range, model `claude-sonnet-5-5`. The counts below come from Riley's replies. The call column comes from the separate `tool_calls` field in each response.
 
