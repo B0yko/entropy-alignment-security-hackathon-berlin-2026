@@ -2,9 +2,11 @@
 
 **Berlin · 14 November 2026** &nbsp; / &nbsp; Break the Model · Team Jem AI
 
-Riley worked the front desk at a fictional clinic. It could tell anyone when the clinic opened; it wasn't supposed to tell a stranger anything about a patient. Our challenge was to break that promise using only the chat. The organizers supplied the assistant, a database of synthetic patients and three levels of protection.
+Riley was an AI assistant for a fictional clinic. It answered front-desk questions and had access to a database of synthetic patient records.
 
-<img src="assets/levels.svg" width="480" alt="Three levels: a warm-up, a reply filter that let data from all 450 synthetic patients through, and an internal tool guard that still revealed one patient match on Sonnet." />
+Entropy set a red-teaming challenge for 20 teams: use prompt injection through Riley's chat interface to make it disclose confidential patient data. The teams tested Riley on different language models across three increasingly strict levels of protection.
+
+<img src="assets/levels.svg" width="480" alt="Level 1: warm-up. Level 2: records exposed for 450/450 synthetic patients. Level 3: Entropy's internal database guard. We reported matches for 2/450 patients; archived Sonnet turns support one." />
 
 ### Level 1 · Warm-up
 
@@ -20,7 +22,7 @@ That's coverage of the patient table, not every field in the clinic or a 100% su
 
 On **Haiku 5.5** and **Sonnet 5.5**, Riley now faced a second decision: even if the model agreed to a request, Entropy's own code could refuse the database read. The old disclosure was much harder to reproduce. Haiku made a call involving restricted data in the archived trials, but didn't reveal a patient record. On Sonnet, we could distinguish a match for one patient's proposed identifiers from a miss.
 
-The [event](https://luma.com/or3d9qtg) was organized for 20 teams. As far as we knew that day, no other team got past the Level 3 guard. That's our recollection, not an official ranking.
+To our knowledge, no other team bypassed the Level 3 guard during the [event](https://luma.com/or3d9qtg). This was our observation, not an official ranking.
 
 ### How the swarm learned
 

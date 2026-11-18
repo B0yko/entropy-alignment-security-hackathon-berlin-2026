@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="374" viewBox="0 0 400 374" lang="en" role="img" aria-labelledby="title" aria-describedby="desc">
   <title id="title">Three levels at the Entropy Alignment Security Hackathon, Berlin</title>
-  <desc id="desc">Level 1 was a warm-up. Level 2 used Qwen3-30B and DeepSeek-V4-Pro; all 450 synthetic patients were represented. Level 3 used Haiku 5.5 and Sonnet 5.5. The tool itself enforced patient scope. The evidence on Sonnet supported one patient match.</desc>
+  <desc id="desc">Level 1 was a warm-up. On Level 2, Qwen3-30B and DeepSeek-V4-Pro exposed records for 450/450 synthetic patients. Level 3 added Entropy's internal database guard. With Haiku 5.5 and Sonnet 5.5 under test, the team reported matches for 2/450 patients. The archived Sonnet turns support one match.</desc>
   <rect width="400" height="374" fill="#181818"/>
   <path d="M22 105.5H378 M22 155.5H378 M22 246.5H378" fill="none" stroke="#555"/>
   <g font-family="Arial, sans-serif" fill="#efefef">
@@ -21,11 +21,11 @@
       <text x="88" y="279">Haiku 5.5 + Sonnet 5.5</text>
     </g>
     <g font-size="17" fill="#cdcdcd">
-      <text x="88" y="214">450 of 450 synthetic patients</text>
-      <text x="88" y="235">were represented.</text>
-      <text x="88" y="305">The tool now enforced patient scope.</text>
-      <text x="88" y="331">On Sonnet, the evidence supported</text>
-      <text x="88" y="352">one patient match.</text>
+      <text x="88" y="214">Records exposed for</text>
+      <text x="88" y="235" font-weight="bold">450/450 synthetic patients.</text>
+      <text x="88" y="305">Entropy's internal database guard</text>
+      <text x="88" y="331" font-weight="bold">2/450 patient matches reported;</text>
+      <text x="88" y="352">1 supported by the Sonnet logs.</text>
     </g>
   </g>
 </svg>
