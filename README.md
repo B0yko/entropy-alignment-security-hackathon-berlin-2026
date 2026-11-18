@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/social-preview.png" width="880" alt="Entropy: prompt injection on Sonnet 5.5 in Riley, the hackathon's fictional clinic assistant." /></p>
+
 # Entropy Alignment Security Hackathon
 
 **Berlin · 14 November 2026** &nbsp; / &nbsp; Break the Model · Team Jem AI
@@ -5,12 +7,6 @@
 Riley was an AI assistant for a fictional clinic. It answered front-desk questions and had access to a database of synthetic patient records.
 
 Entropy set a red-teaming challenge for 20 teams: use prompt injection through Riley's chat interface to make it disclose confidential patient data. The teams tested Riley on different language models across three increasingly strict levels of protection.
-
-## Our red-team strategy
-
-On Level 2 we measured how many patients' records appeared in chat. Level 3 added a guard inside the database tool, so we changed what we measured: **could a patient lose privacy even if Riley never printed their record?**
-
-<p align="center"><img src="assets/social-preview.png" width="880" alt="From records to relationships: Level 2 exposed records for 450 of 450 synthetic patients. On Level 3 a reply linked a surname to a record number without showing the patient record." /></p>
 
 <details>
 <summary>Results at a glance: all three levels</summary>
@@ -31,15 +27,15 @@ That's coverage of the patient table, not every field in the clinic or a 100% su
 
 ### Level 3 · A patient match without a patient record
 
-At Level 2, Entropy filtered Riley's answers. At Level 3, its internal guard could also block a database read, even if **Haiku 5.5** or **Sonnet 5.5** agreed to it. In the archived Haiku turns, no patient record came back. On Sonnet, a number in the reply disclosed something the guard was supposed to protect: **whether a medical record number and a surname belonged to the same patient.**
+#### Our red-team strategy
 
-Both identifiers were already in the question. The negative control came back **0**; the proposed match came back **55**, the count for **one patient** in this test. Both turns logged a database call. [See the two replies and Sonnet's later denial.](evidence.md#level-3--three-sonnet-turns)
+Entropy now checked what Riley could read, not just what it could print. We tested a narrower question: **could Riley confirm that a surname belonged to a particular medical record without returning that record?**
 
-#### What the agents contributed
+<img src="assets/level-3-strategy.svg" width="520" alt="Six investigations feed one shared record of replies and tool calls. The archived Haiku turns showed no patient record; Sonnet's reply supported a link between two known identifiers." />
 
-1. **Keep both sides of each turn.** I built the evaluation kit and coordinated **6 lines of investigation**. Across **200+ logged turns** in my Level 3 report, the agents recorded what Riley said alongside what its tools did.
-2. **Compare notes across agents.** After each round we pooled the observations by turn ID. The team archive preserves **25 selected turns**: 22 Sonnet, 2 Haiku and 1 without a model label. Those are examples for review, not a success rate.
-3. **Send contradictions back for review.** The team traced the **2 patient matches** in my first report back to their source turns. The citation for the second pointed to the first. **One match** held up in the shared archive.
+On Sonnet, both identifiers were already in the question. The negative control returned **0**. For the proposed pair the reply showed **55**, the count for **one matching patient** in this test. Both turns logged a database call. [See the two replies and Sonnet's later denial.](evidence.md#level-3--three-sonnet-turns)
+
+I built the evaluation kit and coordinated six parallel investigations. The agents shared replies and tool calls by turn ID so another agent could check each observation. My report covers **200+ turns**. The team archive preserves **25 examples**, including 22 from Sonnet. Checking those examples narrowed our finding: we reported two matches, but the citation for the second led back to the first.
 
 The implication for the guard: permissions have to cover the records that contribute to an answer, even if the user sees only a number. To our knowledge, no other team got past the Level 3 guard at the [event](https://luma.com/or3d9qtg); we have no official ranking to verify that.
 
