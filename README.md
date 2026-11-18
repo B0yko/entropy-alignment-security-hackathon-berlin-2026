@@ -16,17 +16,17 @@ Entropy set a red-teaming challenge for 20 teams: use prompt injection through R
 
 </details>
 
-### Level 1 · Warm-up
+## Level 1 · Warm-up
 
 This was the easy round. We spent our time measuring what happened once the organizers turned on the stronger controls.
 
-### Level 2 · A record for every patient
+## Level 2 · A record for every patient
 
 Riley ran on **Qwen3-30B** and **DeepSeek-V4-Pro**. Entropy filtered each outgoing answer for private data. Across the two models, our prompt-injection tests got records for **450 of 450 synthetic patients** through that filter. We counted a patient only when a recorded database call backed the reply and the data matched our reference. For 351 patients, it appeared in at least two independent replies.
 
 That's coverage of the patient table, not every field in the clinic or a 100% success rate. Of 43 conversations we scored, 28 returned data from at least one patient in the reference set.
 
-### Level 3 · Sonnet 5.5 and Entropy's internal guard
+## Level 3 · Sonnet 5.5 and Entropy's internal guard
 
 Riley had two barriers: it could refuse the request in chat, and Entropy's guard inside `query_db` could reject the query. We tested **Haiku 5.5** and **Sonnet 5.5**. On Sonnet, what worked was a reframed prompt and a single query that the guard only partly inspected.
 
@@ -47,7 +47,7 @@ The prompt moved Sonnet from refusing to calling the tool. The query then passed
 
 The last row is the finding: `55` for one matching patient. The reply confirmed a private relationship without printing a record. [Prompts, tool calls and the full trace table](evidence.md#level-3--why-the-strategy-worked).
 
-#### How the agents found it
+### How the agents found it
 
 I built the evaluation kit and coordinated **six parallel investigation lanes**. Each round ran prompt and query variants, recorded the reply next to the tool call, and merged the findings into a shared knowledge base that the next round started from. That loop is what turned a general idea into a working query, and it did not retrain the models.
 
