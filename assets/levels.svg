@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="374" viewBox="0 0 400 374" lang="en" role="img" aria-labelledby="title" aria-describedby="desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="354" viewBox="0 0 400 354" lang="en" role="img" aria-labelledby="title" aria-describedby="desc">
   <title id="title">Three levels at the Entropy Alignment Security Hackathon, Berlin</title>
   <desc id="desc">Level 1 was a warm-up. On Level 2, Qwen3-30B and DeepSeek-V4-Pro exposed records for 450/450 synthetic patients. Level 3 added Entropy's internal database guard. With Haiku 5.5 and Sonnet 5.5 under test, the team reported matches for 2/450 patients. The archived Sonnet turns support one match.</desc>
-  <rect width="400" height="374" fill="#181818"/>
+  <rect width="400" height="354" fill="#181818"/>
   <path d="M22 105.5H378 M22 155.5H378 M22 246.5H378" fill="none" stroke="#555"/>
   <g font-family="Arial, sans-serif" fill="#efefef">
-    <text x="22" y="32" font-size="16" fill="#bcbcbc">Berlin field report</text>
+    <text x="22" y="32" font-size="16" fill="#bcbcbc">Berlin · Team-reported results</text>
     <text x="22" y="60" font-size="20">Entropy Alignment Security Hackathon</text>
     <g font-size="16" fill="#bcbcbc">
       <text x="22" y="94">Level</text>
@@ -24,8 +24,7 @@
       <text x="88" y="214">Records exposed for</text>
       <text x="88" y="235" font-weight="bold">450/450 synthetic patients.</text>
       <text x="88" y="305">Entropy's internal database guard</text>
-      <text x="88" y="331" font-weight="bold">2/450 patient matches reported;</text>
-      <text x="88" y="352">1 supported by the Sonnet logs.</text>
+      <text x="88" y="331" font-weight="bold">2/450 exposed</text>
     </g>
   </g>
 </svg>
