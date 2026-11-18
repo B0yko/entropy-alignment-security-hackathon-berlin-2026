@@ -18,24 +18,20 @@ Riley ran on **Qwen3-30B** and **DeepSeek-V4-Pro**. Entropy filtered each outgoi
 
 That's coverage of the patient table, not every field in the clinic or a 100% success rate. Of 43 conversations we scored, 28 returned data from at least one patient in the reference set.
 
-### Level 3 · Entropy moved the guard inside the tool
+### Level 3 · A patient match without a patient record
 
-On **Haiku 5.5** and **Sonnet 5.5**, Riley now faced a second decision: even if the model agreed to a request, Entropy's own code could refuse the database read. The old disclosure was much harder to reproduce. Haiku made a call involving restricted data in the archived trials, but didn't reveal a patient record. On Sonnet, we could distinguish a match for one patient's proposed identifiers from a miss.
+At Level 2, Entropy filtered Riley's answers. At Level 3, its internal guard could also block a database read, even if **Haiku 5.5** or **Sonnet 5.5** agreed to it. In the archived Haiku turns, no patient record came back. On Sonnet, a number in the reply disclosed something the guard was supposed to protect: **whether a medical record number and a surname belonged to the same patient.**
 
-To our knowledge, no other team bypassed the Level 3 guard during the [event](https://luma.com/or3d9qtg). This was our observation, not an official ranking.
+<img src="assets/three-turns.svg" width="480" alt="Turn 8: no match, count 0. Turn 11: one matching patient, count 55. Both turns logged a database call. In turn 12 Sonnet denied making the call in turn 11." />
 
-### How the swarm learned
+Both identifiers were already in the question. What Sonnet gave away was the link between them. In this test, the count **55** meant **one** matching patient, not 55 patients. Its later denial didn't undo the disclosure.
 
-I built the evaluation kit and coordinated six lines of investigation. Each agent kept the model's reply alongside the tool calls for that turn. Between rounds we compared the agents' notes in one ledger. An observation another agent could check stayed in the report; a contradiction went back for review. The shared record improved from round to round without retraining any model.
+#### How we checked the result, step by step
 
-That review changed our own result. My first report listed two patient matches. When the team checked the turn ID for the second, it led back to the first. We kept one.
+1. **Keep both sides of each turn.** I built the evaluation kit and coordinated **6 lines of investigation**. Across **200+ logged turns** in my Level 3 report, the agents recorded what Riley said alongside what its tools did.
+2. **Compare notes across agents.** After each round we pooled the observations by turn ID. The team archive preserves **25 selected turns**: 22 Sonnet, 2 Haiku and 1 without a model label. Those are examples for review, not a success rate.
+3. **Send contradictions back for review.** The team traced the **2 patient matches** in my first report back to their source turns. The citation for the second pointed to the first. **One match** held up in the shared archive.
 
-### What worked on Sonnet
-
-The decisive question was **what a reply revealed**, even when it contained no patient record. A negative control produced a count of **0**. For a proposed medical record number and surname together, Sonnet returned **55**. In this test 55 meant one matching patient, not 55 people. Both turns logged a database call. In the follow-up Sonnet said, “I didn't call the tool that turn.”
-
-The proposed identifiers were already in the question. What crossed the privacy boundary was their **association**. A check on printed fields alone would miss it; the database also has to enforce permissions on the records that contribute to an answer.
-
-My notes from the next day report a full synthetic record on both Sonnet and Qwen. The corresponding turns aren't in the shared archive, so I've kept that result separate from what a reader can check.
+The implication for the guard: permissions have to cover the records that contribute to an answer, even if the user sees only a number. To our knowledge, no other team got past the Level 3 guard at the [event](https://luma.com/or3d9qtg); we have no official ranking to verify that.
 
 [Results and redacted turn IDs](evidence.md) · [Andrii Boiko](https://boiko.ai/)

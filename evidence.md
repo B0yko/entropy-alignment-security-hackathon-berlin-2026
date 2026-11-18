@@ -32,7 +32,7 @@ Andrii's extended report names four more Sonnet turns that reportedly returned t
 
 ## Source record
 
-The team selected 25 traces for review, 22 labeled Sonnet. They are examples, not a trial denominator: no success rate follows from them. The team's review supports one pair, not the two in the initial report. An independent rerun of this Level 3 finding is still outstanding.
+Andrii's 14 November Level 3 report records six lines of investigation and 200+ logged turns. The team archive contains 25 selected turns: 22 labeled Sonnet, two Haiku and one without a model label. They are examples, not a trial denominator: no success rate follows from them. The team's review supports one pair, not the two in the initial report. An independent rerun of this Level 3 finding is still outstanding.
 
 | Source | What it establishes |
 | --- | --- |
