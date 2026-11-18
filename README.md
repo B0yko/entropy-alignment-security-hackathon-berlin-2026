@@ -4,7 +4,7 @@
 
 **The short version.** Entropy put a fictional clinic's assistant on **Sonnet 5.5** behind its own database guard. We got past both: the reply confirmed a guessed patient record with one number, **55**, and printed nothing from the record. Level 2 was wider, 450 of 450 synthetic patients through the output filter.
 
-Riley answered front-desk questions and could query the clinic's database through one tool, `query_db`.
+Riley was the clinic's AI assistant and could query its synthetic patient database through one tool, `query_db`.
 
 At the sanctioned event, Entropy set a red-teaming challenge for 20 teams: use prompt injection through Riley's chat interface to make it disclose confidential patient data. The teams tested Riley on different language models across three increasingly strict levels of protection.
 
