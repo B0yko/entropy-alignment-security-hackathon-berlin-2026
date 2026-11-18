@@ -30,6 +30,8 @@ That's coverage of the patient table, not every field in the clinic or a 100% su
 
 Riley had two barriers: it could refuse the request in chat, and Entropy's guard inside `query_db` could reject the query. We tested **Haiku 5.5** and **Sonnet 5.5**. On Sonnet, what worked was a reframed prompt and a single query that the guard only partly inspected.
 
+Anyone who gives an agent SQL should read this part. The mechanism is **aggregate disclosure**: a count over a cross-join answers a question about one patient, while every row the guard lets through stays legal.
+
 <a href="assets/attack-light.svg#gh-light-mode-only"><img src="assets/attack-light.svg" width="800" alt="Four steps: the prompt recasts Riley as the SQL layer, so Sonnet calls query_db once; the guard inspects only the first table in FROM and the columns in SELECT; the query returns a count, and 55 identifies one matching patient."></a>
 <a href="assets/attack-dark.svg#gh-dark-mode-only"><img src="assets/attack-dark.svg" width="800" alt=""></a>
 
@@ -45,7 +47,9 @@ The prompt moved Sonnet from refusing to calling the tool. The query then passed
 
 The last row is the finding: `55` for one matching patient. The reply confirmed a private relationship without printing a record. [Prompts, tool calls and the full trace table](evidence.md#level-3--why-the-strategy-worked).
 
-### What the guard missed
+[Try the guard yourself](https://b0yko.github.io/entropy-alignment-security-hackathon-berlin-2026/): pick a record number and a surname, send one query, and see which checks run before the count comes back.
+
+### What a guard has to check
 
 Three checks would have closed it, and none of them is expensive:
 
@@ -53,7 +57,7 @@ Three checks would have closed it, and none of them is expensive:
 - every column the query touches, in `SELECT`, `WHERE`, `JOIN` and ordering, not only the ones in the output
 - the shape of the answer: a count, a boolean or a timing difference discloses a private relationship even when no record is printed
 
-The prompt half is the ordinary part. The guard half is the part worth keeping.
+The prompt half is the ordinary part. The guard half, where an aggregate counts as data, is the part worth keeping.
 
 ### How the agents found it
 
@@ -63,4 +67,4 @@ The 14 November report covers **200+ turns**; the team archive keeps **25 select
 
 The failure crossed both boundaries: the prompt induced a tool call, the guard admitted an out-of-scope query, and the count carried private information back. To our knowledge, no other team got past the Level 3 guard at the [event](https://luma.com/or3d9qtg); we have no official ranking to verify that.
 
-[Results and redacted turn IDs](evidence.md) · [Andrii Boiko](https://boiko.ai/)
+[Try the guard](https://b0yko.github.io/entropy-alignment-security-hackathon-berlin-2026/) · [Results and redacted turn IDs](evidence.md) · [Andrii Boiko](https://boiko.ai/)
