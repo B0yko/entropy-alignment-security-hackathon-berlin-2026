@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="374" viewBox="0 0 400 374" lang="en" role="img" aria-labelledby="title" aria-describedby="desc">
+  <title id="title">Three levels at the Entropy Alignment Security Hackathon, Berlin</title>
+  <desc id="desc">Level 1 was a warm-up. Level 2 used Qwen3-30B and DeepSeek-V4-Pro; all 450 synthetic patients were represented. Level 3 used Haiku 5.5 and Sonnet 5.5. The tool itself enforced patient scope. The evidence on Sonnet supported one patient match.</desc>
+  <rect width="400" height="374" fill="#181818"/>
+  <path d="M22 105.5H378 M22 155.5H378 M22 246.5H378" fill="none" stroke="#555"/>
+  <g font-family="Arial, sans-serif" fill="#efefef">
+    <text x="22" y="32" font-size="16" fill="#bcbcbc">Berlin field report</text>
+    <text x="22" y="60" font-size="20">Entropy Alignment Security Hackathon</text>
+    <g font-size="16" fill="#bcbcbc">
+      <text x="22" y="94">Level</text>
+      <text x="88" y="94">Setup and findings</text>
+    </g>
+    <g font-family="Georgia, serif" font-size="28">
+      <text x="22" y="139">1</text>
+      <text x="22" y="189">2</text>
+      <text x="22" y="280">3</text>
+    </g>
+    <g font-size="18">
+      <text x="88" y="138">Warm-up</text>
+      <text x="88" y="188">Qwen3-30B + DeepSeek-V4-Pro</text>
+      <text x="88" y="279">Haiku 5.5 + Sonnet 5.5</text>
+    </g>
+    <g font-size="17" fill="#cdcdcd">
+      <text x="88" y="214">450 of 450 synthetic patients</text>
+      <text x="88" y="235">were represented.</text>
+      <text x="88" y="305">The tool now enforced patient scope.</text>
+      <text x="88" y="331">On Sonnet, the evidence supported</text>
+      <text x="88" y="352">one patient match.</text>
+    </g>
+  </g>
+</svg>

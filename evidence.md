@@ -1,4 +1,20 @@
-# Three turns from Level 3
+# Evidence from the range
+
+## Level 2 · Patient-table coverage
+
+| Measurement | Result |
+| --- | ---: |
+| Synthetic patients represented across both models | 450 / 450 |
+| Patients appearing in at least two independent replies | 351 / 450 |
+| Scored conversations disclosing at least one record | 28 / 43 |
+| Qwen3-30B messages disclosing a record | 15 / 92 |
+| DeepSeek-V4-Pro messages disclosing a record | 14 / 143 |
+
+Source: [frozen results, including model names and units](https://github.com/B0yko/green-mosaic/blob/931cc74d29cf9c1a849a8a9503fbaae7a0949dea/results/results.json). Unredacted delivery is what we observed; the server didn't expose the filter's verdict. The patient count is a census across the two models, not 450 successful attempts per model.
+
+## Level 3 · Three Sonnet turns
+
+<img src="assets/three-turns.svg" width="400" alt="The control and candidate replies showed counts of 0 and 55. Both turns logged a database call." />
 
 These are redacted extracts from the organizers' live Riley range, model `claude-sonnet-5-5`. The counts below come from Riley's replies. The call column comes from the separate `tool_calls` field in each response.
 
