@@ -10,7 +10,7 @@
 | Qwen3-30B messages disclosing a record | 15 / 92 |
 | DeepSeek-V4-Pro messages disclosing a record | 14 / 143 |
 
-Source: [frozen results, including model names and units](https://github.com/B0yko/green-mosaic/blob/931cc74d29cf9c1a849a8a9503fbaae7a0949dea/results/results.json). Unredacted delivery is what we observed; the server didn't expose the filter's verdict. The patient count is a census across the two models, not 450 successful attempts per model.
+Source: frozen results, including model names and units (kept private). Unredacted delivery is what we observed; the server didn't expose the filter's verdict. The patient count is a census across the two models, not 450 successful attempts per model.
 
 ## Level 3 · Why the strategy worked
 
@@ -51,7 +51,7 @@ Andrii's 14 November Level 3 report records six lines of investigation and 200+ 
 | Source | What it establishes |
 | --- | --- |
 | Team knowledge base: `Zmart64/entropy-hackathon-knowledge` at `c0633cb4fa6589bb59a3b5d60668c3ffe374cc82` | Trace numbers, turn IDs, call presence, replies and the team's revised interpretation. SHA-256 of the 25-trace source: `b9bf567bdd1bfad67629da651f3aa7af0d0fec51be8dfc97df1480ebab4236f5`. |
-| Personal range report: `B0yko/green-mosaic` at `931cc74d29cf9c1a849a8a9503fbaae7a0949dea` | Andrii's original report and selected turns. The team reviewed the same material; these are not two independent runs. |
+| Personal range report (private), commit `931cc74d29cf9c1a849a8a9503fbaae7a0949dea` | Andrii's original report and selected turns. The team reviewed the same material; these are not two independent runs. |
 | Evaluation kit: `B0yko/entropy-hackathon-2026` at `181df0dcaf264e8cc6ede85f530eeba81eca2037`, kept private | The pre-event harness and scoring work. Replica runs are separate from the live Sonnet evidence above. |
 
 [Back to the case study](README.md)
